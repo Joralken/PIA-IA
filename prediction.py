@@ -28,7 +28,7 @@
 import cv2
 import numpy as np
 import csv
-from tensorflow.python.keras.preprocessing.image import load_img, img_to_array
+from tensorflow.keras.preprocessing.image  import load_img, img_to_array
 from tensorflow.python.keras.models import load_model
 
 # Variables necesarias para el sketch
@@ -102,7 +102,7 @@ def predict(file):
   answer = np.argmax(result)    # Obtiene el indice del elemento que tiene el valor mas alto
   # Proceso de comparacion entre cada indice del modelo entrenado
   print("\nLa CNN dice: ")
-  with open("Training_indices.csv") as file:
+  with open('Training_indices.csv', encoding='ascii', errors='ignore') as file:
       reader = csv.reader(file, delimiter=',')
       for row in reader:
           print("{}".format(row[answer]))
